@@ -51,6 +51,10 @@ app.use(ordersRouter);
 app.use(userRoute);
 app.use(categoryRoute);
 
-server.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+if (!process.env.VERCEL) {
+  server.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+  });
+}
+
+module.exports = app;

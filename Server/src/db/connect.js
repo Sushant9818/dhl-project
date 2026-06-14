@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-const appConfig = require("../../config/app-config.json");
-const connectionString = appConfig.uri;
+const connectionString = process.env.MONGODB_URI || require("../../config/app-config.json").uri;
 module.exports = async () => {
   try {
     await mongoose.connect(connectionString, {
